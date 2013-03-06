@@ -27,9 +27,8 @@ public class ShaderUtils {
 			return shader;
 
 		} catch (Exception ex) {
-			throw ex;
-		} finally {
 			GL20.glDeleteShader(shader);
+			throw ex;
 		}
 	}
 }

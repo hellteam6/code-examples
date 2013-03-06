@@ -4,8 +4,21 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.glu.GLU;
+import org.slf4j.Logger;
+
 public class Utils {
 
+	public static void checkGLError(Logger logger) {
+		int flag = GL11.glGetError();
+		if(flag == GL11.GL_NO_ERROR) {
+			logger.debug("no error");
+		} else {
+			logger.error(GLU.gluErrorString(flag));
+		}
+	}
+	
 	public static String readFileAsString(String filename) throws Exception {
         StringBuilder source = new StringBuilder();
         
